@@ -7,7 +7,7 @@ const port = 5000;
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cors());
-app.use("api/location_tracker/user", user);
+app.use("/api/user", user);
 app.use(notFound);
 const start = () => {
   try {
