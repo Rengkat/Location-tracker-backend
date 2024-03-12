@@ -1,6 +1,14 @@
 const asyncHandler = require("express-async-handler");
 const CustomError = require("../error-handler/error-handler");
 const User = require("../models/userModel");
+const bcrypt=require("bcrypt")
+const validator=require("validator")
+const jwt=require("jsonwebtoken")
+
+const createToken=(_id)=>{
+  const
+}
+
 const createUser = asyncHandler(async (req, res) => {
   const { firsName, surname, email, password } = req.body;
   if (!firstName || !surname || !phone || !email || !password) {
@@ -23,9 +31,9 @@ const loginUser = asyncHandler(async (req, res) => {
   const { email, password } = req.body;
   // decode the password first
   const user = await User.findOne({ email });
-  if (!user) {
+  if (!user) return res.status(400).json("invalid email or password...")
     //throw error
-  } else {
+   else {
     res.status(200).json({ data: user, success: true });
   }
 });
