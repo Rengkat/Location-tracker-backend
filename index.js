@@ -10,6 +10,7 @@ require("dotenv").config()
 app.use(express.json())
 app.use(cors());
 app.use("/api/users",userRoute)
+
 // CRUD
 app.post("/",(req,res)=>{
     res.send("Welcome our chat app APIs..")
@@ -19,9 +20,13 @@ app.post("/",(req,res)=>{
 
 const port =process.env.PORT || 5000;
 const uri =process.env.ATLAS_URI;
+
+
 app.listen(port,(req,res)=>{
     console.log(`Server running on port ...:${port}`)
 })
+
+// mongoDb connection using connection string in .env file
 
 mongoose.connect(uri,{
     useNewUrlParser:true,
